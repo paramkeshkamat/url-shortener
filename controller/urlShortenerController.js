@@ -18,7 +18,7 @@ const postUrl = async (req, res) => {
         const newShortId = shortid.generate();
         const shortUrl = new ShortUrl({
           longUrl: url,
-          shortUrl: `${req.headers.host}/${newShortId}`,
+          shortUrl: `shorturl/${newShortId}`,
           shortId: newShortId,
         });
         const result = await shortUrl.save();
