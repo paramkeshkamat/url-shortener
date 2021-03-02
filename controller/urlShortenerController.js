@@ -8,7 +8,6 @@ const postUrl = async (req, res) => {
     try {
       const longUrl = await ShortUrl.findOne({ longUrl: url });
       if (longUrl) {
-        // res.json(longUrl);
         res.render("index", {
           shortUrl: longUrl.shortUrl,
           longUrl: longUrl.longUrl,
@@ -18,11 +17,10 @@ const postUrl = async (req, res) => {
         const newShortId = shortid.generate();
         const shortUrl = new ShortUrl({
           longUrl: url,
-          shortUrl: `shorturl/${newShortId}`,
+          shortUrl: `${req.protocol}s://${req.headers.host}/${newShortId}`,
           shortId: newShortId,
         });
         const result = await shortUrl.save();
-        // res.json(result);
         res.render("index", {
           shortUrl: result.shortUrl,
           longUrl: result.longUrl,
