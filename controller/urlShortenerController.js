@@ -29,7 +29,7 @@ const postUrl = async (req, res) => {
       res.status(500).send("Internal Server Error");
     }
   } else {
-    res.send("Not a valid url");
+    res.send("Not a valid URL");
   }
 };
 
