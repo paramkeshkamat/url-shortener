@@ -12,7 +12,6 @@ const postUrl = async (req, res) => {
           shortUrl: longUrl.shortUrl,
           longUrl: longUrl.longUrl,
         });
-        res.render();
       } else {
         const newShortId = shortid.generate();
         const shortUrl = new ShortUrl({
@@ -30,7 +29,7 @@ const postUrl = async (req, res) => {
       res.status(500).send("Internal Server Error");
     }
   } else {
-    res.send("Not a valid email");
+    res.send("Not a valid url");
   }
 };
 
